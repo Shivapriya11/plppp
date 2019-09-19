@@ -1,0 +1,46 @@
+<div class="container">
+    <form #empForm="ngForm" (ngSubmit)="add()" class="was-validated">
+
+ 
+
+        <div class="form-group has-error has-feedback" [class.has-error]="empid.invalid && empid.touched">
+            <label class="label-contorl">Id</label>
+            <input type="number" name="id" id="id" class="form-control" [(ngModel)]="emp.eid" #empid="ngModel" required pattern="[0-9]{2,}">
+            <span class="invalid-feedback" *ngIf="empid.invalid && empid.touched">Id is Requireeeed</span>
+            <span class="invalid-feedback" *ngIf="empid.errors?.pattern && empid.touched"  class="help-block"> Minimum Id should be 2 chars</span>
+        </div>
+
+ 
+
+        <div class="form-group has-error has-feedback" [class.has-error]="empname.invalid && empname.touched">
+            <label class="label-contorl">Name</label>
+            <input type="text" name="name" id="name" class="form-control" [(ngModel)]="emp.ename" #empname="ngModel" required >
+            <span class="invalid-feedback" *ngIf="empname.invalid && empname.touched">Name is Requireeeed</span>
+            <span class="invalid-feedback" *ngIf="empname.errors?.pattern && empname.touched"  class="help-block"> Minimum Name should be 2 chars</span>
+        </div>
+
+ 
+
+        <div class="form-group has-error has-feedback" [class.has-error]="empsalary.invalid && empsalary.touched">
+            <label class="label-contorl">Salary</label>
+            <input type="number" name="salary" id="salary" class="form-control" [(ngModel)]="emp.esalary" #empsalary="ngModel" required >
+            <span class="invalid-feedback" *ngIf="empsalary.invalid && empsalary.touched">salary is Requireeeed</span>
+            <span class="invalid-feedback" *ngIf="empsalary.errors?.pattern && empsalary.touched"  class="help-block"> Minimum Name should be 2 chars</span>
+        </div>
+
+ 
+
+        <div class="form-group has-error has-feedback" [class.has-error]="empedesignation.invalid && empedesignation.touched">
+            <label class="label-contorl">Designation</label>
+            <input type="text" name="designation" id="designation" class="form-control" [(ngModel)]="emp.edesignation" #empedesignation="ngModel" required >
+            <span class="invalid-feedback" *ngIf="empedesignation.invalid && empedesignation.touched">Designation is Requireeeed</span>
+            <span class="invalid-feedback" *ngIf="empedesignation.errors?.pattern && empedesignation.touched"  class="help-block"> Minimum Name should be 2 chars</span>
+        </div>
+
+ 
+
+        <button type="submit" class="btn btn-primary" [disabled]="empForm.invalid">SUBMIT</button>
+        <h5>{{empForm.value|json}}</h5>
+        
+    </form>
+</div>
